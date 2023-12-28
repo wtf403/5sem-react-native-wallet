@@ -1,0 +1,7 @@
+{
+  "display": "standalone",
+  "lang": "en",
+  "name": "sem-react-native-crypto-wallet",
+  "short_name": "sem-react-native-crypto-wallet",
+  "start_url": "/?utm_source=web_app_manifest"
+}
