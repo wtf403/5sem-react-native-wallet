@@ -17,8 +17,11 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "predeploy": "expo export:web",
+    "deploy": "npx gh-pages -d web-build"
   },
+  "homepage": "https://wtf403.github.io/5sem-react-native-wallet-app",
   "version": "1.0.0",
   "private": true,
   "name": "sem-react-native-crypto-wallet"
