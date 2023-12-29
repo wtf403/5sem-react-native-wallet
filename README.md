@@ -1,4 +1,4 @@
-# TypeScript Example
+# An application for online payments and banking operations: Financial management, transfers, bill payment.
 
 <p>
   <!-- iOS -->
