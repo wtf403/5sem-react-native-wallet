@@ -1,13 +1,13 @@
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
-const Header = () => {
+const TermsAndConditions = () => {
   return (
     <View>
-      <Text>Cards screen</Text>
+      <Text>Term and Conditions screen</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({});
 
-export default Header;
+export default TermsAndConditions;

@@ -1,22 +1,32 @@
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { registerRootComponent } from "expo";
+import { StyleSheet, SafeAreaView } from "react-native";
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import TabNavigator from "@/navigation/tabs";
-import Header from "@/components/Header";
+import { enableScreens } from "react-native-screens";
+import AuthProvider from "@/context/AuthProvider";
+import RootNavigator from "@/navigation/root";
+
+import Navigation from "@/Navigation";
+
+enableScreens();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <StatusBar />
-      <SafeAreaView style={styles.container}>
-        <Header />
-        <TabNavigator />
-      </SafeAreaView>
-    </NavigationContainer>
+    // <SafeAreaView style={styles.container}>
+    //   <StatusBar />
+    //   <NavigationContainer>
+    //     <AuthProvider>
+    //       <RootNavigator />
+    //     </AuthProvider>
+    //   </NavigationContainer>
+    // </SafeAreaView>
+    <Navigation />
   );
 }
+
+registerRootComponent(App);
 
 const styles = StyleSheet.create({
   container: {

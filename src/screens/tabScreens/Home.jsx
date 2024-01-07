@@ -1,4 +1,4 @@
-import {SafeAreaView, StyleSheet, Text, View} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const Home = () => {
   return (
