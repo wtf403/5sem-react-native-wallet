@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/5sem-react-native-wallet-app/static/js/main.3dc0e3d8.js",
-    "static/js/569.b5cb0e57.js": "/5sem-react-native-wallet-app/static/js/569.b5cb0e57.js",
-    "index.html": "/5sem-react-native-wallet-app/index.html",
-    "manifest.json": "/5sem-react-native-wallet-app/manifest.json",
-    "serve.json": "/5sem-react-native-wallet-app/serve.json",
-    "main.3dc0e3d8.js.map": "/5sem-react-native-wallet-app/static/js/main.3dc0e3d8.js.map",
-    "569.b5cb0e57.js.map": "/5sem-react-native-wallet-app/static/js/569.b5cb0e57.js.map"
+    "main.js": "/5sem-react-native-wallet/static/js/main.3dc0e3d8.js",
+    "static/js/569.d25e7ed9.js": "/5sem-react-native-wallet/static/js/569.d25e7ed9.js",
+    "index.html": "/5sem-react-native-wallet/index.html",
+    "manifest.json": "/5sem-react-native-wallet/manifest.json",
+    "serve.json": "/5sem-react-native-wallet/serve.json",
+    "main.3dc0e3d8.js.map": "/5sem-react-native-wallet/static/js/main.3dc0e3d8.js.map",
+    "569.d25e7ed9.js.map": "/5sem-react-native-wallet/static/js/569.d25e7ed9.js.map"
   },
   "entrypoints": [
-    "static/js/569.b5cb0e57.js",
+    "static/js/569.d25e7ed9.js",
     "static/js/main.3dc0e3d8.js"
   ]
 }
