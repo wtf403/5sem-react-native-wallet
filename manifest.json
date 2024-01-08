@@ -3,5 +3,17 @@
   "lang": "en",
   "name": "sem-react-native-crypto-wallet",
   "short_name": "sem-react-native-crypto-wallet",
-  "start_url": "/?utm_source=web_app_manifest"
+  "start_url": "/?utm_source=web_app_manifest",
+  "related_applications": [
+    {
+      "platform": "itunes",
+      "id": "com.wtf403.semreactnativecryptowallet"
+    },
+    {
+      "platform": "play",
+      "url": "http://play.google.com/store/apps/details?id=com.wtf403.semreactnativecryptowallet",
+      "id": "com.wtf403.semreactnativecryptowallet"
+    }
+  ],
+  "prefer_related_applications": true
 }
