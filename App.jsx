@@ -2,11 +2,10 @@ import React from "react";
 import { registerRootComponent } from "expo";
 import { StyleSheet, SafeAreaView } from "react-native";
 import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { enableScreens } from "react-native-screens";
 import AuthProvider from "@/context/AuthProvider";
-import RootNavigator from "@/navigation/root";
+// import RootNavigator from "@/navigation/root";
 
 import Navigation from "@/Navigation";
 

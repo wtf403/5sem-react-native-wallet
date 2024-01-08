@@ -1,14 +1,17 @@
-import {SafeAreaView, StyleSheet, Text, View} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-const Exchange = () => {
-    return (
-      <View>
-        <Text>Exchange screen</Text>
-      </View>
-    );
-};
+export default function Exchange() {
+  return (
+    <View style={styles.container}>
+      <Text>Exchange Screen</Text>
+    </View>
+  );
+}
 
-const styles = StyleSheet.create({});
-
-export default Exchange;
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
