@@ -1,15 +1,14 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>Home Screen</Text>
-      <TouchableOpacity onPress={() => navigation.navigate("ReceiveScreen")}>
-        <Text>Receive</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("SendScreen")}>
-        <Text>Send</Text>
-      </TouchableOpacity>
+      <Button
+        onPress={() => navigation.navigate("ReceiveScreen")}
+        title="Receive"
+      />
+      <Button onPress={() => navigation.navigate("SendScreen")} title="Send" />
     </View>
   );
 }

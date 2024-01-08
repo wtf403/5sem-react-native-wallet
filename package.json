@@ -39,7 +39,7 @@
     "predeploy": "expo export:web",
     "deploy": "npx gh-pages -d web-build"
   },
-  "homepage": "https://wtf403.github.io/5sem-react-native-wallet-app",
+  "homepage": "https://wtf403.github.io/5sem-react-native-wallet",
   "version": "1.0.0",
   "private": true,
   "name": "sem-react-native-crypto-wallet"
