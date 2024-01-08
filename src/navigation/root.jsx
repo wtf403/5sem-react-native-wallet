@@ -1,16 +1,31 @@
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import AuthNavigator from "@/navigation/auth";
-import MainNavigator from "@/navigation/main";
+import DrawerView from "@/navigation/drawer";
+import AuthView from "@/navigation/auth";
 
-const RootStack = createNativeStackNavigator();
-const RootNavigator = () => {
+const RootStack = createStackNavigator();
+const RootStackView = () => {
   return (
     <RootStack.Navigator>
-      <RootStack.Screen name="Auth" component={AuthNavigator} />
-      <RootStack.Screen name="Main" component={MainNavigator} />
+      <RootStack.Screen
+        name="DrawerView"
+        component={DrawerView}
+        options={{ headerShown: false }}
+      />
+      <RootStack.Screen
+        name="AuthView"
+        component={AuthView}
+        options={{ headerShown: false }}
+      />
     </RootStack.Navigator>
   );
 };
 
-export default RootNavigator;
+export default function Navigation() {
+  return (
+    <NavigationContainer>
+      <RootStackView />
+    </NavigationContainer>
+  );
+}

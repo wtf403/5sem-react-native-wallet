@@ -1,30 +1,31 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Profile from "../screens/drawerScreens/Profile";
-import Settings from "../screens/drawerScreens/Settings";
+import MainStackView from "@/navigation/main";
+import ProfileScreen from "@/screens/drawerScreens/ProfileScreen";
+import SettingsScreen from "@/screens/drawerScreens/SettingsScreen";
+import CustomDrawerContent from "@/components/DrawerContent";
+import { useWindowDimensions } from "react-native";
 
 const Drawer = createDrawerNavigator();
+export default function DrawerView() {
+  const dimensions = useWindowDimensions();
 
-const DrawerScreen = () => {
   return (
-    <Drawer.Navigator initialRouteName="UserMainInfo">
+    <Drawer.Navigator
+      drawerContent={(props) => CustomDrawerContent(props)}
+      screenOptions={{
+        drawerType: dimensions.width >= 1024 ? "permanent" : "front",
+      }}
+    >
       <Drawer.Screen
+        name="MainStackView"
+        component={MainStackView}
         options={{
-          headerTitle: "",
-          title: "Profile",
+          headerShown: false,
+          drawerItemStyle: { display: "none" },
         }}
-        name="UserMainInfo"
-        component={Profile}
       />
-      <Drawer.Screen
-        options={{
-          headerTitle: "",
-          title: "Settings",
-        }}
-        name="Settings"
-        component={Settings}
-      />
+      <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
     </Drawer.Navigator>
   );
-};
-
-export default DrawerScreen;
+}

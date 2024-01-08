@@ -1,54 +1,56 @@
-import React from "react";
-import { TouchableOpacity, Text } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "@/screens/tabScreens/Home";
-import CardsScreen from "@/screens/tabScreens/Cards";
-import ExchangeScreen from "@/screens/tabScreens/Exchange";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import HomeView from "@/navigation/home";
+import CardsView from "@/navigation/cards";
+import ExchangeView from "@/navigation/exchange";
+
 import HomeIcon from "@/assets/HomeIcon.svg";
 import CardsIcon from "@/assets/CardsIcon.svg";
 import ExchangeIcon from "@/assets/ExchangeIcon.svg";
-import DrawerScreen from "@/navigation/drawer";
-import { styles } from "@/utils/constants";
 
-const Tab = createBottomTabNavigator();
-
-const TabBar = () => {
+const Tab = createMaterialTopTabNavigator();
+export default function TabView() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerLeft: (props) => (
-          <TouchableOpacity
-            {...props}
-            onPress={() => navigation.navigate("Notifications")}
-          >
-            <Text>Open notification</Text>
-          </TouchableOpacity>
-        ),
-        tabBarIcon: ({ color, focused, size }) => {
-          if (route.name === "Home") {
+        tabBarContentContainerStyle: {
+          gap: 4,
+        },
+        tabBarItemStyle: {
+          flexDirection: "row",
+          gap: 4,
+        },
+        tabBarIndicatorStyle: {
+          backgroundColor: "purple",
+          height: 4,
+          borderRadius: 4,
+        },
+        tabBarLabelStyle: {
+          textTransform: "capitalize",
+        },
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+          if (route.name === "HomeView") {
             return (
               <HomeIcon
                 width={size}
                 height={size}
-                fill={focused ? styles.accentColor : "gray"}
+                fill={focused ? color : "gray"}
               />
             );
-          }
-          if (route.name === "Cards") {
+          } else if (route.name === "CardsView") {
             return (
               <CardsIcon
                 width={size}
                 height={size}
-                fill={focused ? styles.accentColor : "gray"}
+                fill={focused ? color : "gray"}
               />
             );
-          }
-          if (route.name === "Exchange") {
+          } else if (route.name === "ExchangeView") {
             return (
               <ExchangeIcon
                 width={size}
                 height={size}
-                fill={focused ? styles.accentColor : "gray"}
+                fill={focused ? color : "gray"}
               />
             );
           }
@@ -56,31 +58,20 @@ const TabBar = () => {
       })}
     >
       <Tab.Screen
-        options={{
-          tabBarActiveTintColor: styles.accentColor,
-          title: "Home",
-        }}
-        name="Home"
-        component={HomeScreen}
+        name="HomeView"
+        component={HomeView}
+        options={{ title: "Home" }}
       />
       <Tab.Screen
-        options={{
-          tabBarActiveTintColor: styles.accentColor,
-          title: "Cards",
-        }}
-        name="Cards"
-        component={CardsScreen}
+        name="CardsView"
+        component={CardsView}
+        options={{ title: "Cards" }}
       />
       <Tab.Screen
-        options={{
-          tabBarActiveTintColor: styles.accentColor,
-          title: "Exchange",
-        }}
-        name="Exchange"
-        component={ExchangeScreen}
+        name="ExchangeView"
+        component={ExchangeView}
+        options={{ title: "Exchange" }}
       />
     </Tab.Navigator>
   );
-};
-
-export default TabBar;
+}

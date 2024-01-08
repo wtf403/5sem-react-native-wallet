@@ -1,16 +1,24 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import Passcode from "@/screens/authScreens/Passcode";
-// import TermsAndConditions from "@/screens/authScreens/TermsAndConditions";
+import LoginScreen from "@/screens/authScreens/LoginScreen";
+import RegisterScreen from "@/screens/authScreens/RegisterScreen";
+import PasscodeScreen from "@/screens/authScreens/PasscodeScreen";
 
-const Stack = createStackNavigator();
-
-const NotificationsNavigator = () => {
+const SignInStack = createStackNavigator();
+const SignInView = () => {
   return (
-    <Stack.Navigator>
-      {/* <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
-      <Stack.Screen name="Passcode" component={Passcode} /> */}
-    </Stack.Navigator>
+    <SignInStack.Navigator>
+      <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
+      <AuthStack.Screen name="RegisterScreen" component={RegisterScreen} />
+    </SignInStack.Navigator>
   );
 };
 
-export default NotificationsNavigator;
+const AuthStack = createStackNavigator();
+export default function AuthView() {
+  return (
+    <AuthStack.Navigator>
+      <SignInStack.Screen name="PasscodeScreen" component={PasscodeScreen} />
+      <SignInStack.Screen name="SignInView" component={SignInView} />
+    </AuthStack.Navigator>
+  );
+}

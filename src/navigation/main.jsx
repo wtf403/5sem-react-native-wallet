@@ -1,16 +1,35 @@
-import Notifications from "@/screens/Notifications";
-import TabNavigator from "@/navigation/tabs";
-import DrawerNavigator from "@/navigation/drawer";
-import { createStackNavigator } from "@react-navigation/stack";
+import { Button } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import NotificationsScreen from "@/screens/mainScreens/NotificationsScreen";
+import TabView from "@/navigation/tabs";
 
-const Stack = createStackNavigator();
-
-const MainNavigator = () => {
+const MainStack = createNativeStackNavigator();
+export default function MainStackView() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Tabs" component={TabNavigator} />
-    </Stack.Navigator>
+    <MainStack.Navigator>
+      <MainStack.Screen
+        name="TabView"
+        component={TabView}
+        options={({ navigation }) => ({
+          title: "",
+          headerLeft: () => (
+            <Button onPress={() => navigation.toggleDrawer()} title="Open" />
+          ),
+          headerRight: () => (
+            <Button
+              onPress={() => navigation.navigate("NotificationsScreen")}
+              title="Notifications"
+            />
+          ),
+        })}
+      />
+      <MainStack.Screen
+        name="NotificationsScreen"
+        component={NotificationsScreen}
+        options={{
+          presentation: "modal",
+        }}
+      />
+    </MainStack.Navigator>
   );
-};
-
-export default MainNavigator;
+}
