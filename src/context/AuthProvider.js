@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import Passcode from "../screens/authScreens/Passcode";
+import PasscodeScreen from "../screens/authScreens/PasscodeScreen";
 
 export const AuthContext = createContext({
   user: null,
@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
         setUser,
       }}
     >
-      {user ? children : <Passcode />}
+      {user ? children : <PasscodeScreen />}
     </AuthContext.Provider>
   );
 };

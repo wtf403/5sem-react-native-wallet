@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Receive() {
+export default function ExchangeScreen() {
   return (
     <View style={styles.container}>
-      <Text>Receive Screen</Text>
+      <Text>Exchange Screen</Text>
     </View>
   );
 }

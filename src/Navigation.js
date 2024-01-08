@@ -12,25 +12,98 @@ import HomeIcon from "@/assets/HomeIcon.svg";
 import CardsIcon from "@/assets/CardsIcon.svg";
 import ExchangeIcon from "@/assets/ExchangeIcon.svg";
 
-import Home from "@/screens/tabScreens/Home";
-import Cards from "@/screens/tabScreens/Cards";
-import Exchange from "@/screens/tabScreens/Exchange";
-import Notifications from "@/screens/mainScreens/Notifications";
-import Profile from "@/screens/drawerScreens/Profile";
-import Settings from "@/screens/drawerScreens/Settings";
-import Login from "@/screens/authScreens/Login";
-import Register from "@/screens/authScreens/Register";
-import Passcode from "@/screens/authScreens/Passcode";
-import customDrawerContent from "@/components/drawerContent";
+import HomeScreen from "@/screens/tabScreens/HomeScreen";
+import CardsScreen from "@/screens/tabScreens/CardsScreen";
+import ExchangeScreen from "@/screens/tabScreens/ExchangeScreen";
+import NotificationsScreen from "@/screens/mainScreens/NotificationsScreen";
+import ProfileScreen from "@/screens/drawerScreens/ProfileScreen";
+import SettingsScreen from "@/screens/drawerScreens/SettingsScreen";
+import LoginScreen from "@/screens/authScreens/LoginScreen";
+import RegisterScreen from "@/screens/authScreens/RegisterScreen";
+import PasscodeScreen from "@/screens/authScreens/PasscodeScreen";
+import CustomDrawerContent from "@/components/DrawerContent";
+
+import ReceiveScreen from "@/screens/mainScreens/homeScreens/ReceiveScreen";
+import SendScreen from "@/screens/mainScreens/homeScreens/SendScreen";
+
+import CardDetailsScreen from "@/screens/mainScreens/cardsScreens/CardDetailsScreen";
+
+const Home = createStackNavigator();
+const HomeView = ({ navigation }) => {
+  return (
+    <Home.Navigator
+      screenOptions={{
+        headerShown: false,
+        title: "",
+      }}
+    >
+      <Home.Screen name="HomeScreen" component={HomeScreen} />
+      <Home.Screen
+        name="ReceiveScreen"
+        component={ReceiveScreen}
+        options={({ navigation }) => ({
+          title: "",
+          presentation: "modal",
+          header: () => (
+            <View>
+              <Button onPress={() => navigation.goBack()} title="Close" />
+            </View>
+          ),
+        })}
+      />
+      <Home.Screen
+        name="SendScreen"
+        component={SendScreen}
+        options={{
+          presentation: "modal",
+          headerLeft: () => {
+            <Button onPress={() => navigation.goBack()} title="Close" />;
+          },
+        }}
+      />
+    </Home.Navigator>
+  );
+};
+
+const Cards = createStackNavigator();
+const CardsView = () => {
+  return (
+    <Cards.Navigator>
+      <Cards.Screen name="CardsScreen" component={CardsScreen} />
+      <Cards.Screen
+        name="CardDetailsScreen"
+        component={CardDetailsScreen}
+        options={{
+          presentation: "modal",
+        }}
+      />
+    </Cards.Navigator>
+  );
+};
 
 const Tab = createMaterialTopTabNavigator();
 const TabView = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
+        tabBarContentContainerStyle: {
+          gap: 4,
+        },
+        tabBarItemStyle: {
+          flexDirection: "row",
+          gap: 4,
+        },
+        tabBarIndicatorStyle: {
+          backgroundColor: "purple",
+          height: 4,
+          borderRadius: 4,
+        },
+        tabBarLabelStyle: {
+          textTransform: "capitalize",
+        },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === "Home") {
+          if (route.name === "HomeView") {
             return (
               <HomeIcon
                 width={size}
@@ -38,7 +111,7 @@ const TabView = () => {
                 fill={focused ? color : "gray"}
               />
             );
-          } else if (route.name === "Cards") {
+          } else if (route.name === "CardsView") {
             return (
               <CardsIcon
                 width={size}
@@ -46,7 +119,7 @@ const TabView = () => {
                 fill={focused ? color : "gray"}
               />
             );
-          } else if (route.name === "Exchange") {
+          } else if (route.name === "ExchangeScreen") {
             return (
               <ExchangeIcon
                 width={size}
@@ -58,9 +131,21 @@ const TabView = () => {
         },
       })}
     >
-      <Tab.Screen name="Home" component={Home} options={{}} />
-      <Tab.Screen name="Cards" component={Cards} />
-      <Tab.Screen name="Exchange" component={Exchange} />
+      <Tab.Screen
+        name="HomeView"
+        component={HomeView}
+        options={{ title: "Home" }}
+      />
+      <Tab.Screen
+        name="CardsView"
+        component={CardsView}
+        options={{ title: "Cards" }}
+      />
+      <Tab.Screen
+        name="ExchangeScreen"
+        component={ExchangeScreen}
+        options={{ title: "Exchange" }}
+      />
     </Tab.Navigator>
   );
 };
@@ -79,15 +164,15 @@ const MainStackView = () => {
           ),
           headerRight: () => (
             <Button
-              onPress={() => navigation.navigate("Notifications")}
+              onPress={() => navigation.navigate("NotificationsScreen")}
               title="Notifications"
             />
           ),
         })}
       />
       <MainStack.Screen
-        name="Notifications"
-        component={Notifications}
+        name="NotificationsScreen"
+        component={NotificationsScreen}
         options={{
           presentation: "modal",
         }}
@@ -102,7 +187,7 @@ const DrawerView = () => {
 
   return (
     <Drawer.Navigator
-      drawerContent={(props) => customDrawerContent(props)}
+      drawerContent={(props) => CustomDrawerContent(props)}
       screenOptions={{
         drawerType: dimensions.width >= 768 ? "permanent" : "front",
       }}
@@ -115,8 +200,8 @@ const DrawerView = () => {
           drawerItemStyle: { display: "none" },
         }}
       />
-      <Drawer.Screen name="Profile" component={Profile} />
-      <Drawer.Screen name="Settings" component={Settings} />
+      <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
     </Drawer.Navigator>
   );
 };
@@ -125,8 +210,8 @@ const SignInStack = createStackNavigator();
 const SignInView = () => {
   return (
     <SignInStack.Navigator>
-      <AuthStack.Screen name="Login" component={Login} />
-      <AuthStack.Screen name="Register" component={Register} />
+      <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
+      <AuthStack.Screen name="RegisterScreen" component={RegisterScreen} />
     </SignInStack.Navigator>
   );
 };
@@ -135,7 +220,7 @@ const AuthStack = createStackNavigator();
 const AuthView = () => {
   return (
     <AuthStack.Navigator>
-      <SignInStack.Screen name="Passcode" component={Passcode} />
+      <SignInStack.Screen name="PasscodeScreen" component={PasscodeScreen} />
       <SignInStack.Screen name="SignInView" component={SignInView} />
     </AuthStack.Navigator>
   );
