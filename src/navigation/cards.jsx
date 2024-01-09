@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import CardDetailsScreen from "@/screens/mainScreens/CardDetailsScreen";
 import CardsScreen from "@/screens/tabScreens/CardsScreen";
+import "react-native-gesture-handler";
 import { useMemo } from "react";
 
 const Cards = createStackNavigator();

@@ -1,4 +1,5 @@
 import React from "react";
+import { useMemo } from "react";
 import { registerRootComponent } from "expo";
 import { StyleSheet, SafeAreaView } from "react-native";
 import "react-native-gesture-handler";
@@ -7,12 +8,18 @@ import { enableScreens } from "react-native-screens";
 import { StatusBar } from "expo-status-bar";
 import AuthProvider from "@/context/AuthProvider";
 import Navigation from "@/navigation/root";
-// import Navigation from "@/Navigation";
+// import BottomSheet from "@gorhom/bottom-sheet";
 
 enableScreens();
 
 export default function App() {
-  return <Navigation />;
+  const snapPoints = useMemo(() => ["50%", "90%"], []);
+
+  return (
+    // <BottomSheet animateOnMount={true} snapPoints={snapPoints} index={1}>
+    <Navigation />
+    // </BottomSheet>
+  );
 }
 
 registerRootComponent(App);
