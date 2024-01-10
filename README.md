@@ -1,3 +1,3 @@
 # Banking app
 
-[Figma](https://www.figma.com/file/cDDGff6taNsVtquPON2ucn/Crypto-Wallet?type=design&node-id=2%3A56&mode=design&t=CgvoOZICKlOYfSnX-1)
+[Figma](https://www.figma.com/file/qoIXEjDuf7cdCjGIYUHeMT/Desert-wallet?type=design&node-id=0%3A1&mode=design&t=dIfhBsY0QaH1wM3P-1)
