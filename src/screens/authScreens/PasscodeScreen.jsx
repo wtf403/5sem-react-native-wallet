@@ -10,7 +10,7 @@ const Passcode = () => {
 
   useEffect(() => {
     if (pinCount === totalPins) {
-      navigation.navigate("TermsAndConditions");
+      navigation.navigate("SignInView");
     }
   }, [pinCount]);
 

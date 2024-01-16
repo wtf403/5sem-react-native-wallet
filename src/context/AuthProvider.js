@@ -1,5 +1,4 @@
-import React, { createContext, useState } from "react";
-import PasscodeScreen from "../screens/authScreens/PasscodeScreen";
+import { createContext, useContext, useState } from "react";
 
 export const AuthContext = createContext({
   user: null,
@@ -7,7 +6,7 @@ export const AuthContext = createContext({
 });
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   return (
     <AuthContext.Provider
@@ -16,9 +15,11 @@ const AuthProvider = ({ children }) => {
         setUser,
       }}
     >
-      {user ? children : <PasscodeScreen />}
+      {children}
     </AuthContext.Provider>
   );
 };
+
+export const useAuth = () => useContext(AuthContext);
 
 export default AuthProvider;

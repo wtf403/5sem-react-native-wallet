@@ -1,3 +1,21 @@
 export const styles = {
-  accentColor: "#6850fc",
-};
+  accentColor: "#FCCE5D",
+  colorsTextPrimary: "#141A21",
+  colorsTextSecond: "#5A6876",
+  colorsTextThird: "#A3A3A3",
+  colorsBorderColor: "#EEEEEE",
+  colorsBgPrimary: "#FFFFFF",
+  colorsBgInput: "#F6F6F68F",
+  colorsYellow700: "#FDC226",
+  colorsYellow500: "#FCCE5D",
+  colorsYellow300: "#FCCE5D80",
+  colorsYellow100: "#FCCE5D14",
+  colorsGreen700: "#20B56D",
+  colorsGreen500: "#2CCD80",
+  colorsGreen300: "#2CCD8080",
+  colorsGreen100: "#27AE6014",
+  colorsRed700: "#DB3F3F",
+  colorsRed500: "#EB5757",
+  colorsRed300: "#EB57574D",
+  colorsRed100: "#F442420D"
+}

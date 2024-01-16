@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
-    "@gorhom/bottom-sheet": "^4.6.0",
+    "@gorhom/bottom-sheet": "^5.0.0-alpha.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/drawer": "^6.6.6",
     "@react-navigation/material-top-tabs": "^6.6.5",
