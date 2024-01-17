@@ -234,6 +234,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.BorderColor,
     borderRadius: 8,
+    shadowColor: "#eee",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
   },
   item: {
     flexDirection: "row",

@@ -2,6 +2,7 @@ import { StyleSheet, TouchableOpacity, View, Text, Image } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Notifications from "@/view/screens/main/Notifications";
+import Scan from "@/view/screens/main/Scan";
 import HubView from "@/view/screens/main/hub";
 import AssetsView from "@/view/screens/main/assets";
 import PayView from "@/view/screens/main/pay";
@@ -16,6 +17,7 @@ import PayIcon from "@/media/icons/PayIcon.svg";
 import ExploreIcon from "@/media/icons/ExploreIcon.svg";
 import TradeIcon from "@/media/icons/TradeIcon.svg";
 import NotificationsIcon from "@/media/icons/NotificationsIcon.svg";
+import ScanIcon from "@/media/icons/ScanIcon.svg";
 
 function CustomTabBar({ state, descriptors, navigation }) {
   return (
@@ -137,19 +139,30 @@ export default function MainStackView() {
                 style={styles.avatar}
                 onPress={() => navigation.toggleDrawer()}
               >
-                <Image source={user.avatar} />
+                <Image source={user.avatar} style={{ width: 32, height: 32 }} />
               </TouchableOpacity>
-              <Text style={styles.username}>{user.username}</Text>
+              <Text style={styles.username}>@{user.username}</Text>
             </View>
           ),
           headerRight: () => (
-            <TouchableOpacity
-              style={styles.avatar}
-              onPress={() => navigation.navigate("notifications")}
-            >
-              <NotificationsIcon width={24} height={24} />
-            </TouchableOpacity>
+            <View style={styles.buttons}>
+              <TouchableOpacity onPress={() => navigation.navigate("scan")}>
+                <ScanIcon style={{ width: 24, height: 24 }} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("notifications")}
+              >
+                <NotificationsIcon style={{ width: 24, height: 24 }} />
+              </TouchableOpacity>
+            </View>
           ),
+        })}
+      />
+      <MainStack.Screen
+        name="scan"
+        component={Scan}
+        options={({ navigation }) => ({
+          title: "Scan",
         })}
       />
       <MainStack.Screen
@@ -165,18 +178,22 @@ export default function MainStackView() {
 
 const styles = StyleSheet.create({
   user: {
+    marginLeft: 24,
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
   },
   avatar: {
-    width: 32,
-    height: 32,
     borderRadius: 16,
     overflow: "hidden",
   },
   username: {
     fontSize: 16,
     fontWeight: "bold",
+  },
+  buttons: {
+    marginRight: 24,
+    flexDirection: "row",
+    gap: 12,
   },
 });

@@ -6,8 +6,7 @@ export default function AssetsView({ navigation }) {
   return (
     <Nav.Navigator
       screenOptions={{
-        title: "",
-        headerShown: true,
+        headerShown: false,
         safeAreaInsets: { top: 0 },
         cardStyle: {
           backgroundColor: "white",
