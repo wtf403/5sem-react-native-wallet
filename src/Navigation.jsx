@@ -3,7 +3,7 @@ import { View } from "react-native";
 import BottomSheet from "@gorhom/bottom-sheet";
 import AuthProvider from "@/context/AuthProvider";
 import { NavigationContainer } from "@react-navigation/native";
-import RootStackView from "@/navigation/root";
+import RootStackView from "@/view/screens";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
