@@ -1,7 +1,12 @@
 import { createContext, useContext, useState } from "react";
 
+const userAvatar = require("@/media/TestUserAvatar.png");
+
 export const AuthContext = createContext({
-  user: null,
+  user: {
+    username: "wtf403",
+    avatar: "",
+  },
   setUser: () => {},
 });
 
