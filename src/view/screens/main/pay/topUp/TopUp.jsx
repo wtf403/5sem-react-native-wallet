@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function topUp() {
+export default function TopUp() {
   return (
     <View style={styles.container}>
       <Text>Top Up Screen</Text>

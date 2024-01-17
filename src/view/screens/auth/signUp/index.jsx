@@ -6,18 +6,18 @@ import CheckPrivateKey from "@/view/screens/auth/signUp/CheckPrivateKey";
 import Protect from "@/view/screens/auth/signUp/Protect";
 import Congratulations from "@/view/screens/auth/signUp/Congratulations";
 
-const SignInStack = createStackNavigator();
-export default function SignInView() {
+const SignUpStack = createStackNavigator();
+export default function SignUpView() {
   return (
-    <SignInStack.Navigator>
-      <SignInStack.Screen name="start" component={Start} />
-      <SignInStack.Screen name="take-pen" component={TakePen} />
-      <SignInStack.Screen name="private-key" component={PrivateKey} />
-      <SignInStack.Screen
+    <SignUpStack.Navigator>
+      <SignUpStack.Screen name="start" component={Start} />
+      <SignUpStack.Screen name="take-pen" component={TakePen} />
+      <SignUpStack.Screen name="private-key" component={PrivateKey} />
+      <SignUpStack.Screen
         name="check-private-key"
         component={CheckPrivateKey}
       />
-      <SignInStack.Screen
+      <SignUpStack.Screen
         name="pincode"
         component={
           <Pincode
@@ -27,8 +27,8 @@ the application and perform operations."
           />
         }
       />
-      <SignInStack.Screen name="protect" component={Protect} />
-      <SignInStack.Screen name="congratulations" component={Congratulations} />
-    </SignInStack.Navigator>
+      <SignUpStack.Screen name="protect" component={Protect} />
+      <SignUpStack.Screen name="congratulations" component={Congratulations} />
+    </SignUpStack.Navigator>
   );
 }

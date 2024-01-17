@@ -1,7 +1,7 @@
 import { Button } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import NotificationsScreen from "@/view/screens/main/Notifications";
+import Notifications from "@/view/screens/main/Notifications";
 import HubView from "@/view/screens/main/hub";
 import AssetsView from "@/view/screens/main/assets";
 import PayView from "@/view/screens/main/pay";
@@ -82,18 +82,18 @@ export default function MainStackView() {
           ),
           headerRight: () => (
             <Button
-              onPress={() => navigation.navigate("Notifications")}
+              onPress={() => navigation.navigate("notifications")}
               title="Notifications"
             />
           ),
         })}
       />
       <MainStack.Screen
-        name="Notifications"
-        component={NotificationsScreen}
-        options={{
-          presentation: "modal",
-        }}
+        name="notifications"
+        component={Notifications}
+        options={({ navigation }) => ({
+          title: "Notifications",
+        })}
       />
     </MainStack.Navigator>
   );

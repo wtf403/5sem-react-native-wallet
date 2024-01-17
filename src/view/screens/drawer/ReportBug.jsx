@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Profile() {
+export default function ReportBug() {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Text>Report Bug</Text>
     </View>
   );
 }

@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Profile() {
+export default function InviteFriends() {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Text>Invite Friends</Text>
     </View>
   );
 }

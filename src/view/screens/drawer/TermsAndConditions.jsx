@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Profile() {
+export default function TermsAndConditions() {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Text>Terms And Conditions</Text>
     </View>
   );
 }
@@ -15,3 +15,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+[];

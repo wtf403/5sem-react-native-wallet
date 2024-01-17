@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Profile() {
+export default function Protocol() {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <Text>Protocol</Text>
     </View>
   );
 }
