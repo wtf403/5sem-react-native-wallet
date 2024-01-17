@@ -21,11 +21,15 @@ import FAQIcon from "@/media/icons/FAQIcon.svg";
 import ProtocolIcon from "@/media/icons/ProtocolIcon.svg";
 import TermsAndConditionsIcon from "@/media/icons/TermsAndConditionsIcon.svg";
 import PrivacyPolicyIcon from "@/media/icons/PrivacyPolicyIcon.svg";
+import LogOutIcon from "@/media/icons/LogOutIcon.svg";
+
+import { useAuth } from "@/context/AuthProvider";
 
 import {
   useWindowDimensions,
   View,
   Text,
+  Image,
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
@@ -36,9 +40,12 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
+import { colors } from "@/utils/constants";
 
 const Drawer = createDrawerNavigator();
 export default function DrawerView() {
+  const { user } = useAuth();
+
   const settingsItems = [
     {
       component: Profile,
@@ -82,7 +89,7 @@ export default function DrawerView() {
     },
   ];
 
-  const AboutItems = [
+  const aboutItems = [
     {
       component: Protocol,
       icon: ProtocolIcon,
@@ -109,6 +116,11 @@ export default function DrawerView() {
       drawerContent={(props) => {
         return (
           <DrawerContentScrollView {...props}>
+            <View style={styles.heading}>
+              <Image source={user.avatar} style={styles.avatar} />
+              <Text>@{user.username}</Text>
+            </View>
+
             {/* Settings */}
             <Text style={styles.groupTitle}>Settings</Text>
             <View style={styles.group}>
@@ -142,10 +154,10 @@ export default function DrawerView() {
             {/* About */}
             <Text style={styles.groupTitle}>About</Text>
             <View style={styles.group}>
-              {shareAndSupportItems.map((Item, i) => (
+              {aboutItems.map((Item, i) => (
                 <TouchableOpacity
                   key={i}
-                  onPress={() => console.log(Item.name)}
+                  onPress={() => props.navigation.navigate(Item.name)}
                   style={styles.item}
                 >
                   <Item.icon width={24} height={24} />
@@ -154,10 +166,17 @@ export default function DrawerView() {
               ))}
             </View>
 
-            <DrawerItem
-              label="Logout"
-              onPress={() => props.navigation.navigate(Item.name)}
-            />
+            {/* Logout */}
+            <View style={styles.group}>
+              <TouchableOpacity
+                style={styles.item}
+                onPress={() => console.log("logout")}
+              >
+                <LogOutIcon width={24} height={24} />
+                <Text>Log out</Text>
+              </TouchableOpacity>
+            </View>
+
             <DrawerItemList {...props} />
           </DrawerContentScrollView>
         );
@@ -173,7 +192,7 @@ export default function DrawerView() {
         options={{ headerShown: false }}
         component={MainStackView}
       />
-      {[...settingsItems, ...shareAndSupportItems, ...AboutItems].map(
+      {[...settingsItems, ...shareAndSupportItems, ...aboutItems].map(
         (Item, i) => {
           return (
             <Drawer.Screen
@@ -196,10 +215,35 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     padding: 16,
   },
-
+  heading: {
+    marginHorizontal: "auto",
+    alignItems: "center",
+    flex: 1,
+    gap: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  groupTitle: {
+    marginHorizontal: 24,
+    marginBottom: 4,
+    paddingLeft: 8,
+  },
   group: {
     marginBottom: 16,
+    marginHorizontal: 24,
     borderWidth: 1,
-    borderColor: "gray",
+    borderColor: colors.BorderColor,
+    borderRadius: 8,
+  },
+  item: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  avatar: {
+    width: 50,
+    height: 50,
   },
 });

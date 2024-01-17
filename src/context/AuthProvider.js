@@ -3,15 +3,15 @@ import { createContext, useContext, useState } from "react";
 const userAvatar = require("@/media/TestUserAvatar.png");
 
 export const AuthContext = createContext({
-  user: {
-    username: "wtf403",
-    avatar: "",
-  },
+  user: null,
   setUser: () => {},
 });
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    username: "wtf403",
+    avatar: userAvatar,
+  });
 
   return (
     <AuthContext.Provider
