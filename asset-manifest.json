@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.js": "/5sem-react-native-wallet/static/js/main.e3adc2e2.js",
+    "main.js": "/5sem-react-native-wallet/static/js/main.4e9fab74.js",
     "static/js/644.b3c6335b.js": "/5sem-react-native-wallet/static/js/644.b3c6335b.js",
+    "static/media/TestUserAvatar.png": "/5sem-react-native-wallet/static/media/TestUserAvatar.e6665eab79fa2752b2d4.png",
     "index.html": "/5sem-react-native-wallet/index.html",
     "manifest.json": "/5sem-react-native-wallet/manifest.json",
     "serve.json": "/5sem-react-native-wallet/serve.json",
-    "main.e3adc2e2.js.map": "/5sem-react-native-wallet/static/js/main.e3adc2e2.js.map",
+    "main.4e9fab74.js.map": "/5sem-react-native-wallet/static/js/main.4e9fab74.js.map",
     "644.b3c6335b.js.map": "/5sem-react-native-wallet/static/js/644.b3c6335b.js.map"
   },
   "entrypoints": [
     "static/js/644.b3c6335b.js",
-    "static/js/main.e3adc2e2.js"
+    "static/js/main.4e9fab74.js"
   ]
 }
