@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import ComingSoon from "@/view/com/ComingSoon";
 
 export default function Language() {
   return (
     <View style={styles.container}>
-      <Text>Language</Text>
+      <ComingSoon />
     </View>
   );
 }

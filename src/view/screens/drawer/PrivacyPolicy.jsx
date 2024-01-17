@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import ComingSoon from "@/view/com/ComingSoon";
 
 export default function PrivacyPolicy() {
   return (
     <View style={styles.container}>
-      <Text>PrivacyPolicy</Text>
+      <ComingSoon />
     </View>
   );
 }

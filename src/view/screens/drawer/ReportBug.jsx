@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import ComingSoon from "@/view/com/ComingSoon";
 
 export default function ReportBug() {
   return (
     <View style={styles.container}>
-      <Text>Report Bug</Text>
+      <ComingSoon />
     </View>
   );
 }

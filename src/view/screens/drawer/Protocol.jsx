@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import ComingSoon from "@/view/com/ComingSoon";
 
 export default function Protocol() {
   return (
     <View style={styles.container}>
-      <Text>Protocol</Text>
+      <ComingSoon />
     </View>
   );
 }

@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import ComingSoon from "@/view/com/ComingSoon";
 
 export default function AppIcon() {
   return (
     <View style={styles.container}>
-      <Text>AppIcon</Text>
+      <ComingSoon />
     </View>
   );
 }

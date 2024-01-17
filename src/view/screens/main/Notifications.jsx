@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import ComingSoon from "@/view/com/ComingSoon";
 
 export default function Notifications() {
   return (
     <View style={styles.container}>
-      <Text>Notifications</Text>
+      <ComingSoon />
     </View>
   );
 }

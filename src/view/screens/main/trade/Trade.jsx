@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View, Button } from "react-native";
+import ComingSoon from "@/view/com/ComingSoon";
 
 export default function Trade({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Trade</Text>
+      <ComingSoon />
     </View>
   );
 }
