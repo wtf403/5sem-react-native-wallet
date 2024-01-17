@@ -11,16 +11,16 @@ import Protocol from "@/view/screens/drawer/Protocol";
 import TermsAndConditions from "@/view/screens/drawer/TermsAndConditions";
 import PrivacyPolicy from "@/view/screens/drawer/PrivacyPolicy";
 
-import ProfileIcon from "@/media/ProfileIcon.svg";
-import ThemeIcon from "@/media/ThemeIcon.svg";
-import LanguageIcon from "@/media/LanguageIcon.svg";
-import IconAppIcon from "@/media/IconAppIcon.svg";
-import InviteFriendsIcon from "@/media/InviteFriendsIcon.svg";
-import ReportBugIcon from "@/media/ReportBugIcon.svg";
-import FAQIcon from "@/media/FAQIcon.svg";
-import ProtocolIcon from "@/media/ProtocolIcon.svg";
-import TermsAndConditionsIcon from "@/media/TermsAndConditionsIcon.svg";
-import PrivacyPolicyIcon from "@/media/PrivacyPolicyIcon.svg";
+import ProfileIcon from "@/media/icons/ProfileIcon.svg";
+import ThemeIcon from "@/media/icons/ThemeIcon.svg";
+import LanguageIcon from "@/media/icons/LanguageIcon.svg";
+import IconAppIcon from "@/media/icons/IconAppIcon.svg";
+import InviteFriendsIcon from "@/media/icons/InviteFriendsIcon.svg";
+import ReportBugIcon from "@/media/icons/ReportBugIcon.svg";
+import FAQIcon from "@/media/icons/FAQIcon.svg";
+import ProtocolIcon from "@/media/icons/ProtocolIcon.svg";
+import TermsAndConditionsIcon from "@/media/icons/TermsAndConditionsIcon.svg";
+import PrivacyPolicyIcon from "@/media/icons/PrivacyPolicyIcon.svg";
 
 import {
   useWindowDimensions,
