@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { registerRootComponent } from "expo";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, View, Text } from "react-native";
 import { enableScreens } from "react-native-screens";
 import Navigation from "@/Navigation";
 import { useFonts } from "expo-font";
@@ -10,7 +10,7 @@ enableScreens();
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
-    InterMedium: require("@/media/fonts/Inter-Regular.ttf"),
+    InterRegular: require("@/media/fonts/Inter-Regular.ttf"),
     InterMedium: require("@/media/fonts/Inter-Medium.ttf"),
     InterSemiBold: require("@/media/fonts/Inter-SemiBold.ttf"),
   });
@@ -21,7 +21,11 @@ export default function App() {
     }
   }, [fontsLoaded, fontError]);
 
-  return <Navigation onLayout={onLayoutRootView} />;
+  return (
+    <View style={styles.container}>
+      <Navigation onLayout={onLayoutRootView} />
+    </View>
+  );
 }
 
 registerRootComponent(App);

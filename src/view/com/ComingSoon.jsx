@@ -25,5 +25,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10,
   },
-  subheading: { maxWidth: 250, textAlign: "center" },
+  subheading: { maxWidth: 250, textAlign: "center", fontFamily: "InterMedium" },
 });
