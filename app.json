@@ -10,17 +10,6 @@
     "ios": {
       "bundleIdentifier": "com.wtf403.semreactnativecryptowallet"
     },
-    "plugins": [
-      [
-        "expo-font",
-        {
-          "fonts": [
-            "./src/media/fonts/Inter-Medium.ttf",
-            "./src/media/fonts/Inter-Regular.ttf",
-            "./src/media/fonts/Inter-SemiBold.ttf"
-          ]
-        }
-      ]
-    ]
+    "plugins": []
   }
 }

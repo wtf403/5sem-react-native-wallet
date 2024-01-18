@@ -10,9 +10,9 @@ enableScreens();
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
-    InterRegular: require("@/media/fonts/Inter-Regular.ttf"),
-    InterMedium: require("@/media/fonts/Inter-Medium.ttf"),
-    InterSemiBold: require("@/media/fonts/Inter-SemiBold.ttf"),
+    InterRegular: require("../assets/fonts/Inter-Regular.ttf"),
+    InterMedium: require("../assets/fonts/Inter-Medium.ttf"),
+    InterSemiBold: require("../assets/fonts/Inter-SemiBold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
