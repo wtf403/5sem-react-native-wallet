@@ -39,7 +39,8 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "predeploy": "expo export:web",
-    "deploy": "npx gh-pages -d web-build"
+    "deploy": "npx gh-pages -d web-build",
+    "postinstall": "patch-package"
   },
   "homepage": "https://wtf403.github.io/5sem-react-native-wallet",
   "version": "1.0.0",
