@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import MainStackView from "@/view/screens/main/index";
 import Profile from "@/view/screens/drawer/Profile";
@@ -11,6 +12,8 @@ import Protocol from "@/view/screens/drawer/Protocol";
 import TermsAndConditions from "@/view/screens/drawer/TermsAndConditions";
 import PrivacyPolicy from "@/view/screens/drawer/PrivacyPolicy";
 
+import BackIcon from "@/media/icons/BackIcon.svg";
+
 import ProfileIcon from "@/media/icons/ProfileIcon.svg";
 import ThemeIcon from "@/media/icons/ThemeIcon.svg";
 import LanguageIcon from "@/media/icons/LanguageIcon.svg";
@@ -23,13 +26,13 @@ import TermsAndConditionsIcon from "@/media/icons/TermsAndConditionsIcon.svg";
 import PrivacyPolicyIcon from "@/media/icons/PrivacyPolicyIcon.svg";
 import LogOutIcon from "@/media/icons/LogOutIcon.svg";
 
+import { Image } from "expo-image";
 import { useAuth } from "@/context/AuthProvider";
 
 import {
   useWindowDimensions,
   View,
   Text,
-  Image,
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
@@ -40,7 +43,7 @@ import {
   DrawerItemList,
   DrawerItem,
 } from "@react-navigation/drawer";
-import { colors } from "@/utils/constants";
+import { colors, fonts, gaps } from "@/utils/constants";
 
 const Drawer = createDrawerNavigator();
 export default function DrawerView() {
@@ -111,14 +114,33 @@ export default function DrawerView() {
   ];
 
   const dimensions = useWindowDimensions();
+  const isLargeScreen = dimensions.width >= 1024;
+
+  const [contentHeight, setContentHeight] = useState(0);
+
   return (
     <Drawer.Navigator
       drawerContent={(props) => {
         return (
-          <DrawerContentScrollView {...props}>
-            <View style={styles.heading}>
-              <Image source={user.avatar} style={styles.avatar} />
-              <Text>@{user.username}</Text>
+          <DrawerContentScrollView
+            style={styles.drawerContainer}
+            onContentSizeChange={(_, height) => setContentHeight(height)}
+            scrollEnabled={contentHeight > dimensions.height}
+            {...props}
+          >
+            <View style={styles.header}>
+              <View style={styles.topPart}>
+                <Image source={user.avatar} style={styles.avatar} />
+                <View style={styles.backIconWrapper}>
+                  <TouchableOpacity
+                    onPress={() => props.navigation.closeDrawer()}
+                  >
+                    <BackIcon width={24} height={24} />
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              <Text style={styles.username}>@{user.username}</Text>
             </View>
 
             {/* Settings */}
@@ -184,7 +206,9 @@ export default function DrawerView() {
       screenOptions={{
         headerShown: true,
         drawerItemStyle: { display: "none" },
-        drawerType: dimensions.width >= 1024 ? "permanent" : "front",
+        drawerType: isLargeScreen ? "permanent" : "front",
+        drawerStyle: isLargeScreen ? null : { width: "100%" },
+        drawerPosition: "right",
       }}
     >
       <Drawer.Screen
@@ -211,26 +235,49 @@ export default function DrawerView() {
 }
 
 const styles = StyleSheet.create({
+  drawerContainer: {
+    flex: 1,
+  },
+  header: {
+    marginHorizontal: "auto",
+    alignItems: "center",
+    flex: 1,
+    gap: 6,
+    width: "100%",
+    paddingHorizontal: 16,
+    paddingBottom: 12,
+  },
+  topPart: {
+    position: "relative",
+    alignItems: "center",
+    width: "100%",
+  },
+  username: {
+    fontSize: 18,
+    fontFamily: fonts.SemiBold,
+  },
+  backIconWrapper: {
+    position: "absolute",
+    left: 4,
+    top: "50%",
+    transform: [{ translateY: -12 }],
+  },
+  backIcon: {
+    width: 24,
+    height: 24,
+  },
   list: {
     backgroundColor: "white",
     padding: 16,
   },
-  heading: {
-    marginHorizontal: "auto",
-    alignItems: "center",
-    flex: 1,
-    gap: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
   groupTitle: {
-    marginHorizontal: 24,
+    marginHorizontal: 12,
     marginBottom: 4,
     paddingLeft: 8,
   },
   group: {
     marginBottom: 16,
-    marginHorizontal: 24,
+    marginHorizontal: 12,
     borderWidth: 1,
     borderColor: colors.BorderColor,
     borderRadius: 8,
@@ -241,7 +288,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
-
     elevation: 8,
   },
   item: {
@@ -252,7 +298,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   avatar: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
   },
 });

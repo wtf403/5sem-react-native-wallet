@@ -18,3 +18,13 @@ export const colors = {
   Red300: "#EB57574D",
   Red100: "#F442420D"
 }
+
+export const fonts = {
+  Medium: "InterMedium",
+  Regular: "InterRegular",
+  SemiBold: "InterSemiBold",
+}
+
+export const gaps = {
+  screenMargin: 12
+}

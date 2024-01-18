@@ -1,11 +1,16 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { Image } from "expo-image";
+import Animated from "react-native-reanimated";
+import CaravanImage from "@/media/Illustrations/Caravan.png";
 
 export default function ComingSoon() {
-  const Caravan = require("@/media/illustrations/Caravan.png");
-
   return (
     <View style={styles.container}>
-      <Image source={Caravan} style={{ width: 200, height: 200 }} />
+      <Animated.Image
+        source={CaravanImage}
+        transition={500}
+        style={{ width: 200, height: 200 }}
+      />
       <Text style={styles.heading}>Coming soon...</Text>
       <Text style={styles.subheading}>
         We're working hard to bring you something amazing!

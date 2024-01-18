@@ -1,4 +1,11 @@
-import { StyleSheet, TouchableOpacity, View, Text, Image } from "react-native";
+import {
+  StyleSheet,
+  Platform,
+  TouchableOpacity,
+  View,
+  Text,
+} from "react-native";
+import { Image } from "expo-image";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Notifications from "@/view/screens/main/Notifications";
@@ -9,7 +16,7 @@ import PayView from "@/view/screens/main/pay";
 import ExploreView from "@/view/screens/main/explore";
 import TradeView from "@/view/screens/main/trade";
 import { useAuth } from "@/context/AuthProvider";
-import { colors } from "@/utils/constants";
+import { colors, fonts, gaps } from "@/utils/constants";
 
 import HubIcon from "@/media/icons/HubIcon.svg";
 import AssetsIcon from "@/media/icons/AssetsIcon.svg";
@@ -19,14 +26,17 @@ import TradeIcon from "@/media/icons/TradeIcon.svg";
 import NotificationsIcon from "@/media/icons/NotificationsIcon.svg";
 import ScanIcon from "@/media/icons/ScanIcon.svg";
 
+const isWeb = Platform.OS === "web";
+
 function CustomTabBar({ state, descriptors, navigation }) {
   return (
     <View
       style={{
         flexDirection: "row",
         backgroundColor: colors.BgPrimary,
-        height: 60,
         borderTopWidth: 1,
+        paddingTop: 12,
+        paddingBottom: 28,
         borderTopColor: colors.BorderColor,
         alignItems: "center",
       }}
@@ -178,7 +188,8 @@ export default function MainStackView() {
 
 const styles = StyleSheet.create({
   user: {
-    marginLeft: 24,
+    marginTop: 4,
+    marginLeft: isWeb ? gaps.screenMargin : 0,
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
@@ -192,7 +203,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   buttons: {
-    marginRight: 24,
+    marginTop: 4,
+    marginRight: isWeb ? gaps.screenMargin : 0,
     flexDirection: "row",
     gap: 12,
   },
