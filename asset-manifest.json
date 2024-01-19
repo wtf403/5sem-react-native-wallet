@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/5sem-react-native-wallet/static/js/main.6b2a0d22.js",
-    "static/js/296.5bcfaa6e.js": "/5sem-react-native-wallet/static/js/296.5bcfaa6e.js",
+    "main.js": "/5sem-react-native-wallet/static/js/main.850f27ff.js",
+    "static/js/273.68b18945.js": "/5sem-react-native-wallet/static/js/273.68b18945.js",
     "static/media/Inter-SemiBold.ttf": "/5sem-react-native-wallet/static/media/Inter-SemiBold.43b5c0659de61b19d6a0.ttf",
     "static/media/Inter-Medium.ttf": "/5sem-react-native-wallet/static/media/Inter-Medium.d31554d1c2fad5bece0f.ttf",
     "static/media/Inter-Regular.ttf": "/5sem-react-native-wallet/static/media/Inter-Regular.4f9a0a6f83e459cbfe69.ttf",
@@ -10,11 +10,11 @@
     "index.html": "/5sem-react-native-wallet/index.html",
     "manifest.json": "/5sem-react-native-wallet/manifest.json",
     "serve.json": "/5sem-react-native-wallet/serve.json",
-    "main.6b2a0d22.js.map": "/5sem-react-native-wallet/static/js/main.6b2a0d22.js.map",
-    "296.5bcfaa6e.js.map": "/5sem-react-native-wallet/static/js/296.5bcfaa6e.js.map"
+    "main.850f27ff.js.map": "/5sem-react-native-wallet/static/js/main.850f27ff.js.map",
+    "273.68b18945.js.map": "/5sem-react-native-wallet/static/js/273.68b18945.js.map"
   },
   "entrypoints": [
-    "static/js/296.5bcfaa6e.js",
-    "static/js/main.6b2a0d22.js"
+    "static/js/273.68b18945.js",
+    "static/js/main.850f27ff.js"
   ]
 }
