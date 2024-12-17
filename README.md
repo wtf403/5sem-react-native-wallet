@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="75%" src="assets/logo-light.svg" alt="Desert logo">
+  <img width="20%" src=".assets/logo/light-rounded.svg" alt="Desert logo">
 </p>
 <p align="center">
   <b>Desert</b>
