@@ -2,13 +2,13 @@
   <img width="20%" src=".assets/logo/light-rounded.svg" alt="Desert logo">
 </p>
 <p align="center">
-  <b>Desert</b>
+  <b>Desert App</b>
 </p>
 <p align="center">
   Empowering ideas, driven by comunity
 </p>
 <p align="center">
-  <a href="https://github.com/buydry/desert/wiki">
+  <a href="https://github.com/DesertApp/desert/wiki">
     <img src="https://img.shields.io/badge/view-wiki-green.svg" alt="Wiki Badge">
   </a>
 </p>
