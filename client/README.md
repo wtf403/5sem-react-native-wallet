@@ -1,5 +1,25 @@
-# Desert Clients
+# Client
 
-Clients wiki: <https://github.com/DesertApp/desert/wiki/clients>
+## 📖 Wiki on Github
 
-TODO: describe how to run the clients
+<https://github.com/DesertApp/desert/wiki/dev/clients>
+
+## 📁 Directory Structure
+
+> TODO: fix structure
+
+```txt
+/  
+├── shared/            # Shared libraries or components  
+│   ├── utils/          # Utility functions   
+│   ├── core/           # Core logic  
+│   └── services/       # Other services  
+├── docs/              # Documentation resources  
+└── tools/            # Dev tools or scripts  
+```
+
+## 🚀 Run
+
+```bash
+yarn dev
+```

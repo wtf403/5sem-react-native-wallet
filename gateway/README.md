@@ -1,5 +1,25 @@
-# Desert Gateways
+# Gateway
 
-Gateways wiki: <https://github.com/DesertApp/desert/wiki/gateways>
+## 📖 Wiki on Github
 
-TODO: describe how to run the gateways
+<https://github.com/DesertApp/desert/wiki/dev/gateways>
+
+## 📁 Directory Structure
+
+> TODO: fix structure
+
+```txt
+/  
+├── shared/            # Shared libraries or components  
+│   ├── utils/          # Utility functions   
+│   ├── core/           # Core logic  
+│   └── services/       # Other services  
+├── docs/              # Documentation resources  
+└── tools/            # Dev tools or scripts  
+```
+
+## 🚀 Run
+
+```bash
+yarn dev
+```
