@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="20%" src=".assets/logo/light-rounded.svg" alt="Desert logo">
+  <img width="20%" src="/.github/assets/logo/light-rounded.svg" alt="Desert logo">
 </p>
 <p align="center">
   <b>Desert App</b>
@@ -13,17 +13,15 @@
   </a>
 </p>
 
-Below is an example of how you can create narrative links between each section and guide the reader smoothly from one topic to the next:
-
 ---
 
-## 🚀 Who Are We?
+## 🚀 Who Are We
 
 We’re forging a community-driven blockchain platform designed to transform any of yours ideas into reality. We bring together innovators, creators, and believers in a decentralized ecosystem where creativity thrives and ideas spark meaningful action.
 
 **We harness cutting-edge technology**, combining modern frameworks and languages to create a robust and scalable platform. Our tech stack is carefully chosen to deliver performance, security, and an exceptional user experience. Let's dive into *repo* the details.
 
-## 🗂️ What's Inside?
+## 🗂️ What's Inside
 
 Our monorepo is your backstage pass to the Desert App ecosystem. It contains four key components, each playing a vital role in delivering a seamless blockchain experience:
 
@@ -34,7 +32,7 @@ Our monorepo is your backstage pass to the Desert App ecosystem. It contains fou
 
 Every component is tuned for performance and scalability, but there’s one vital ingredient that makes it all come alive. It’s driven by the people.
 
-## 🌟 People?
+## 🌟 People
 
 At Desert App, you’re not just an observer—you’re a stakeholder. **Community-first development** means your voice, talents, and ideas guide us. Here’s how you can help shape our future:
 
@@ -44,7 +42,7 @@ At Desert App, you’re not just an observer—you’re a stakeholder. **Communi
 
 Not sure how to express your ideas? Let’s design it together.
 
-## 🎨 Design?
+## 🎨 Design
 
 Good design captivates and converts. We believe the user experience is best shaped by the community that uses it. That’s why we open our design process to everyone:
 
@@ -52,7 +50,7 @@ Good design captivates and converts. We believe the user experience is best shap
   
 But creativity needs resources, and that’s where support steps in.
 
-## 💰 Money?
+## 💰 Support
 
 Your sponsorship isn’t just financial backing—it’s your stamp on what we’re building. With your help, we can:
 
@@ -66,4 +64,4 @@ Your sponsorship isn’t just financial backing—it’s your stamp on what we�
 
 This isn’t just our story—it’s yours. Whether you’re a seasoned developer, a visionary designer, a crypto enthusiast, or simply someone with a hunger to build something new, Desert App welcomes you.
 
-**The next chapter awaits.** Let’s bring ideas to life—together.
+**Let’s bring ideas to life — together!**
