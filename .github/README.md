@@ -1,13 +1,28 @@
-<p align="center">
-  <img width="20%" src="/.github/assets/logo/light-rounded.svg" alt="Desert logo">
-</p>
-<p align="center">
-  <b>Desert App</b>
-</p>
+<div align="center">
+  <picture>
+    <source srcset="/.github/assets/logo/ios-dark.svg" media="(prefers-color-scheme: dark)">
+    <img width="20%" src="/.github/assets/logo/ios-light.svg" alt="Desert logo">
+  </picture>
+  <br />
+  <picture>
+    <source srcset="/.github/assets/logo/title-ios-dark.svg" media="(prefers-color-scheme: dark)">
+    <img width="20%" src="/.github/assets/logo/title-ios-light.svg" alt="Desert logo">
+  </picture>
+</div>
+<br/>
 <p align="center">
   Empowering ideas, driven by comunity
 </p>
 <p align="center">
+  <a href="https://github.com/DesertApp/desert/wiki">
+    <img src="https://img.shields.io/badge/just%20the%20message-8A2BE2" alt="Ex Badge">
+  </a>
+  <a href="https://github.com/DesertApp/desert/wiki">
+    <img src="https://img.shields.io/badge/view-wiki-green.svg" alt="Ex">
+  </a>
+  <a href="https://github.com/DesertApp/desert/wiki">
+    <img src="https://img.shields.io/badge/just%20the%20message-8A2BE2" alt="Ex Badge">
+  </a>
   <a href="https://github.com/DesertApp/desert/wiki">
     <img src="https://img.shields.io/badge/view-wiki-green.svg" alt="Wiki Badge">
   </a>
