@@ -1,12 +1,9 @@
 <div align="center">
-  <picture>
-    <source srcset="/.github/assets/logo/ios-dark.svg" media="(prefers-color-scheme: dark)">
-    <img width="20%" src="/.github/assets/logo/ios-light.svg" alt="Desert logo">
-  </picture>
+  <img width="20%" src="/.github/assets/logo/ios-dark.svg#gh-dark-mode-only">
+  <img width="20%" src="/.github/assets/logo/ios-light.svg#gh-light-mode-only">
   <br />
-  <picture>
-    <source srcset="/.github/assets/logo/title-ios-dark.svg" media="(prefers-color-scheme: dark)">
-    <img width="20%" src="/.github/assets/logo/title-ios-light.svg" alt="Desert logo">
+  <img width=20% src="/.github/assets/logo/title-ios-dark.svg#gh-dark-mode-only">
+  <img width="20%" src="/.github/assets/logo/title-ios-light.svg#gh-light-mode-only">
   </picture>
 </div>
 <br/>
@@ -27,8 +24,6 @@
     <img src="https://img.shields.io/badge/view-wiki-green.svg" alt="Wiki Badge">
   </a>
 </p>
-
----
 
 ## 🚀 Who Are We
 
