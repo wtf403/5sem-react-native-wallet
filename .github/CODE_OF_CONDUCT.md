@@ -28,7 +28,7 @@ We’re here to create, collaborate, and launch the future. To keep our communit
 We’re all human, and misunderstandings happen. If they do:  
 - **Pause and Reflect**: Take a moment to calm down and think before responding.  
 - **Communicate Constructively**: Share concerns respectfully and seek solutions together.  
-- **Reach Out for Support**: If needed, contact [community@desert.app]. We’re here to help.  
+- **Reach Out for Support**: If needed, contact <desertapp@proton.me>. We’re here to help.  
 
 ---
 
