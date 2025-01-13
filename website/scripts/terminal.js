@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const maxDepth = 15; // Reduced depth
   const horizontalPadding = 25;
   const verticalPadding = 30;
-  const curvatureIntensity = 0.8; // Much less curve
+  const curvatureIntensity = 0.3; // Reduced from 0.8 to 0.3 for less curve
 
   // Set subtle perspective
   terminalContainer.style.perspective = "2000px";
@@ -23,22 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const lineElement = document.createElement("div");
     lineElement.textContent = line.trimStart();
 
-    // Calculate normalized position (0 to 1)
     const normalizedPos = index / (totalLines - 1);
 
-    // Very subtle vertical curve
     const verticalCurve = Math.pow(normalizedPos - 0.5, 2) * curvatureIntensity;
 
-    // Minimal horizontal curve
-    const horizontalCurve = Math.pow(2 * (normalizedPos - 0.5), 2) * 10;
+    const horizontalCurve = Math.pow(2 * (normalizedPos - 0.5), 2) * 5; // Reduced from 10 to 5
 
-    // Reduced depth effect
-    const depth = Math.pow(Math.abs(normalizedPos - 0.5) * 2, 2) * maxDepth;
+    const depth =
+      Math.pow(Math.abs(normalizedPos - 0.5) * 2, 2) * maxDepth * 0.5; // Added * 0.5 to reduce depth
 
-    // Almost no scale change
-    const scaleFactor = 0.98 - Math.pow(normalizedPos - 0.5, 2) * 0.04;
+    const scaleFactor = 0.99 - Math.pow(normalizedPos - 0.5, 2) * 0.05; // Adjusted for less scale variation
 
-    // Apply transforms with much subtler effects
     lineElement.style.transform = `
       translate3d(
         ${horizontalPadding + horizontalCurve}px,
@@ -147,7 +142,7 @@ function getTerminalContent() {
     });
 }
 
-// Update the hidden text layer with current terminal content
+// Fetch content once at startup
 getTerminalContent().then((terminalContent) => {
   updateHiddenText(terminalContent);
 });
@@ -161,10 +156,6 @@ function renderWorld(delta) {
 
     fadeCountdown += 0.2;
   }
-
-  // Update the hidden text layer with current terminal content
-  const terminalContent = getTerminalContent();
-  updateHiddenText(terminalContent);
 }
 
 // init WebGL

@@ -1,14 +1,5 @@
 body {
   background-color: #ffa600;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  padding: 2rem;
-  color: #ffa600;
-  font: 1.3rem Inconsolata, monospace;
-  text-shadow: 0 0 5px rgba(255, 166, 0, 0.4);
-  transform-origin: 50% 0%;
-  box-shadow: 0 0 20px rgba(255, 166, 0, 0.2);  
 }
 
 ::selection {
@@ -17,73 +8,37 @@ body {
   text-shadow: none;
 }
 
-pre {
-  margin: 0;
-  position: relative;
-  animation: textFlicker 0.3s infinite;
-  perspective: 1000px;
-}
-
-output {
-  display: block;
-  transform-style: preserve-3d;
-}
-
-output > * {
-  display: block;
-  transform: translate3d(20px, 0, 30px);
-  transition: all 0.3s ease-out;
-}
-
-/* Gradually adjust the curve from top to middle */
-output > *:nth-child(3) { transform: translate3d(15px, 0, 30px); }
-output > *:nth-child(4) { transform: translate3d(10px, 0, 30px); }
-output > *:nth-child(5) { transform: translate3d(5px, 0, 30px); }
-
-/* Middle lines */
-output > *:nth-child(6),
-output > *:nth-child(7),
-output > *:nth-child(8),
-output > *:nth-child(9),
-output > *:nth-child(10),
-output > *:nth-child(11),
-output > *:nth-child(12),
-output > *:nth-child(13),
-output > *:nth-child(14),
-output > *:nth-child(15) {
-  transform: translate3d(-20px, 0, 30px);
-}
-
-/* Gradually adjust the curve from middle to bottom */
-output > *:nth-child(16) { transform: translate3d(5px, 0, 30px); }
-output > *:nth-child(17) { transform: translate3d(10px, 0, 30px); }
-output > *:nth-child(18) { transform: translate3d(15px, 0, 30px); }
-output > *:nth-child(19) { transform: translate3d(20px, 0, 30px); }
-
-output > *:nth-child(1) { transition-delay: 0.05s; }
-output > *:nth-child(2) { transition-delay: 0.1s; }
-output > *:nth-child(3) { transition-delay: 0.15s; }
-output > *:nth-child(4) { transition-delay: 0.2s; }
-
-@keyframes textFlicker {
-  0% { opacity: 0.95; }
-  50% { opacity: 1; }
-  100% { opacity: 0.95; }
+.terminal {
+  font: 1.3rem Inconsolata, monospace;
+  text-shadow: 0 0 5px rgba(255, 166, 0, 0.4);
+  transform-origin: 50% 0%;
+  box-shadow: 0 0 20px rgba(255, 166, 0, 0.2);  
+  max-width: 900px;
+  margin: 0 auto;   
 }
 
 #terminal-container {
-    resize: both;
+  margin-top: 60px;
+  --border-width: 60px;
   background-image: radial-gradient(
     rgba(191, 117, 0, 0.75), black 120%
   );
-
-  width: 1200px; 
-  height: 800px; 
-  margin: 0 auto; 
-  overflow: hidden; 
+  background-size: cover;
+  height: 600px;
   position: relative; 
-  padding: 20px; 
-  box-sizing: border-box; 
+  padding: var(--border-width);
+  overflow: visible;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -40px;
+    border-image: url('/assets/terminal-frame.png') 93 92 87 92 stretch stretch;
+    border-style: inset;
+    border-width: var(--border-width);
+    pointer-events: none;
+    z-index: 1;
+  }
 }
 
 #terminal-container canvas {
@@ -95,8 +50,29 @@ output > *:nth-child(4) { transition-delay: 0.2s; }
   z-index: -1; 
 }
 
+#terminal-container output {
+  color: #ffa600;
+  display: block;
+  transform-style: preserve-3d;
+  clip-path: inset(0 20px 0 0);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 40px,
+    black calc(100% - 40px),
+    transparent
+  );
+}
+
 #terminal-container pre {
+   margin: 0;
+  position: relative;
+  animation: textFlicker 0.3s infinite;
+  perspective: 1000px;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
   font-family: monospace;
+  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
