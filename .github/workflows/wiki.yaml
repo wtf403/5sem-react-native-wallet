@@ -1,22 +1,69 @@
-name: Web
+name: Wiki sync
+
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  contents: write
+      - dev
+    paths:
+      - "docs/**"
+  repository_dispatch:
+    types: [docs]
+  gollum:
 
 jobs:
-  web:
+  wiki-sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout Repo
+        uses: actions/checkout@v4
 
-      - name: Publish to GitHub Wiki
-        uses: SwiftDocOrg/github-wiki-publish-action@1.0.0
-            
+      - name: Configure Git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Set sync direction
+        id: sync-direction
+        run: |
+          if [ "${{ github.event_name }}" = "gollum" ]; then
+            echo "source=wiki" >> $GITHUB_OUTPUT
+            echo "destination=docs" >> $GITHUB_OUTPUT
+          else
+            echo "source=docs" >> $GITHUB_OUTPUT
+            echo "destination=wiki" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Clone Wiki
+        run: |
+          WIKI_URL="https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git"
+          TMP_DIR=$(mktemp -d -t ci-XXXXXXXXXX)
+          echo "TMP_DIR=$TMP_DIR" >> $GITHUB_ENV
+          
+          cd $TMP_DIR
+          git init
+          git pull $WIKI_URL
+
+      - name: Sync Content
+        run: |
+          COMMIT_MSG="chore(docs): Sync ${{ steps.sync-direction.outputs.source }} to ${{ steps.sync-direction.outputs.destination }} [skip-cd]"
+          
+          if [ "${{ steps.sync-direction.outputs.destination }}" = "wiki" ]; then
+            # Sync to wiki
+            rsync -avzr --delete --exclude='.git/' "${{ steps.sync-direction.outputs.source }}/" "$TMP_DIR"
+            cd $TMP_DIR
+            git config --global --add safe.directory "$TMP_DIR"
+            git add .
+            git diff-index --quiet HEAD || git commit -m "$COMMIT_MSG"
+            git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git" master
+          else
+            # Sync from wiki to docs
+            rsync -avzr --delete --exclude='.git/' "$TMP_DIR/" "${{ steps.sync-direction.outputs.source }}"
+            git add .
+            git diff-index --quiet HEAD || git commit -m "$COMMIT_MSG"
+            git push origin main
+          fi
+
+      - name: Cleanup
+        run: |
+          rm -rf $TMP_DIR
