@@ -3,48 +3,71 @@ name: Wiki sync
 on:
   push:
     branches:
-      - dev
+      - main
     paths:
       - "docs/**"
-  repository_dispatch:
-    types: [docs]
+  workflow_dispatch:
   gollum:
 
-env:
-  GIT_AUTHOR_NAME: Actionbot
-  GIT_AUTHOR_EMAIL: actions@github.com
-
 jobs:
-  job-sync-docs-to-wiki:
+  wiki-sync:
     runs-on: ubuntu-latest
-    if: github.event_name != 'gollum'
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
-      - name: Sync docs to wiki
-        uses: newrelic/wiki-sync-action@main
-        with:
-          source: docs
-          destination: wiki
-          token: ${{ secrets.NEWRELIC_BOT_TOKEN }}
-          gitAuthorName: ${{ env.GIT_AUTHOR_NAME }}
-          gitAuthorEmail: ${{ env.GIT_AUTHOR_EMAIL }}
-  
-  job-sync-wiki-to-docs:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'gollum'
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.NEWRELIC_BOT_TOKEN }} # allows us to push back to repo
-          ref: develop
-      - name: Sync Wiki to Docs
-        uses: newrelic/wiki-sync-action@main
-        with:
-          source: wiki
-          destination: docs
-          token: ${{ secrets.NEWRELIC_BOT_TOKEN }}
-          gitAuthorName: ${{ env.GIT_AUTHOR_NAME }}
-          gitAuthorEmail: ${{ env.GIT_AUTHOR_EMAIL }}
-          branch: develop # since default branch is develop in this example
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Set sync direction
+        id: sync-direction
+        run: |
+          if [ "${{ github.event_name }}" = "gollum" ]; then
+            echo "source=wiki" >> $GITHUB_OUTPUT
+            echo "destination=docs" >> $GITHUB_OUTPUT
+          else
+            echo "source=docs" >> $GITHUB_OUTPUT
+            echo "destination=wiki" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Clone Wiki
+        run: |
+          WIKI_URL="https://${{ secrets.DESERT_ROBOT_PAT }}@github.com/${{ github.repository }}.wiki.git"
+          TMP_DIR=$(mktemp -d -t ci-XXXXXXXXXX)
+          echo "TMP_DIR=$TMP_DIR" >> $GITHUB_ENV
+          
+          cd $TMP_DIR
+          git init
+          git pull $WIKI_URL
+
+      - name: Sync Content
+        run: |
+          COMMIT_MSG="chore(docs): Sync ${{ steps.sync-direction.outputs.source }} to ${{ steps.sync-direction.outputs.destination }}"
+          
+          git remote remove origin
+          
+          if [ "${{ steps.sync-direction.outputs.destination }}" = "wiki" ]; then
+            # Sync to wiki
+            rsync -avzr --delete --exclude='.git/' "${{ steps.sync-direction.outputs.source }}/" "$TMP_DIR"
+            cd $TMP_DIR
+            git config --global --add safe.directory "$TMP_DIR"
+            git add .
+            git diff-index --quiet HEAD || git commit -m "$COMMIT_MSG"
+            git remote add origin "https://x-access-token:${{ secrets.DESERT_ROBOT_PAT }}@github.com/${{ github.repository }}.wiki.git"
+            git push origin master
+          else
+            # Sync from wiki to docs
+            rsync -avzr --delete --exclude='.git/' "$TMP_DIR/" "${{ steps.sync-direction.outputs.source }}"
+            cd $GITHUB_WORKSPACE
+            git add .
+            git diff-index --quiet HEAD || git commit -m "$COMMIT_MSG"
+            git remote add origin "https://x-access-token:${{ secrets.DESERT_ROBOT_PAT }}@github.com/${{ github.repository }}"
+            git push origin main
+          fi
+
+      - name: Cleanup
+        run: |
+          rm -rf $TMP_DIR
