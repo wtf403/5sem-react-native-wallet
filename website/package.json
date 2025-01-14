@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "repository": "https://github.com/desertapp/desert",
+  "homepage": "https://desertapp.github.io/desert",
   "author": "Desert",
   "license": "Apache-2.0",
   "devDependencies": {
